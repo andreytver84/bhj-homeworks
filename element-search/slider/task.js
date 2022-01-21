@@ -15,6 +15,13 @@ function activeDot() {
     dots[findSlideIndex].classList.add('slider__dot_active');
 }
 
+function removeActiveSlide() {
+    sliderItemsArr[findSlideIndex].classList.remove('slider__item_active');
+}
+function AddActiveSlide() {
+    sliderItemsArr[findSlideIndex].classList.add('slider__item_active');
+}
+
 findActiveSlideIndex();
 activeDot();
 
@@ -29,22 +36,22 @@ dots.forEach((item,i) => {
 
 prev.onclick = function () {
     findActiveSlideIndex();
-    sliderItemsArr[findSlideIndex].classList.remove('slider__item_active');
+    removeActiveSlide() 
     findSlideIndex--;
     if (findSlideIndex == -1) {
         findSlideIndex = sliderLength - 1;
     }
-    sliderItemsArr[findSlideIndex].classList.add('slider__item_active');
+    AddActiveSlide()
     activeDot();
 }
 
 next.onclick = function () {
     findActiveSlideIndex();
-    sliderItemsArr[findSlideIndex].classList.remove('slider__item_active');
+    removeActiveSlide() 
     findSlideIndex++;
     if (findSlideIndex == sliderLength) {
         findSlideIndex = 0;
     }
-    sliderItemsArr[findSlideIndex].classList.add('slider__item_active');
+    AddActiveSlide()
     activeDot();
 }
