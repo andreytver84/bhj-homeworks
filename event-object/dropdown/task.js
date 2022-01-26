@@ -19,6 +19,7 @@ function select(event) {
     const btn = event.target;
     let textLink = btn.textContent;
     event.currentTarget.parentElement.previousElementSibling.textContent = textLink;
+    event.currentTarget.parentElement.classList.remove('dropdown__list_active');
 }
 
 dropdownBlocks.forEach(item => {
