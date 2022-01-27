@@ -92,7 +92,7 @@ class Autocomplete {
         }
       ];
       
-      const arr = myExample.filter(item => !item.text.search(text) == -1);
+      const arr = myExample.filter(item => item.text.search(text) !== -1);
 
     return arr;
   }
