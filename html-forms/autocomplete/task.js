@@ -67,7 +67,7 @@ class Autocomplete {
     this.list.innerHTML = html.join('');
   }
 
-  getMatches( text ) {
+  getMatches(text) {
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
@@ -81,12 +81,20 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+      const myExample = [
+        {
+          text: 'Чубакка',
+          value: '1'
+        },
+        {
+          text: 'Чебурашка',
+          value: '2'
+        }
+      ];
+      
+      const arr = myExample.filter(item => !item.text.search(text) == -1);
+
+    return arr;
   }
 }
 
