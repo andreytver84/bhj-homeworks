@@ -81,18 +81,10 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-      const myExample = [
-        {
-          text: 'Чубакка',
-          value: '1'
-        },
-        {
-          text: 'Чебурашка',
-          value: '2'
-        }
-      ];
+      const options = this.input.options;
+      const optionsArr = Array.from(options);
       
-      const arr = myExample.filter(item => item.text.search(text) !== -1);
+      const arr = optionsArr.filter(item => item.text.search(text) !== -1);
 
     return arr;
   }
