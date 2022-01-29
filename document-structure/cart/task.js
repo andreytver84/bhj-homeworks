@@ -26,6 +26,7 @@ function addProduct(event) {
         </div>
     `);
     };
+    product.querySelector('.product__quantity-value').innerText = "1";
 };
 
 function changeCount(event) {
