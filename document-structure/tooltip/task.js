@@ -29,7 +29,7 @@ window.addEventListener('load', () => {
 
 
         blockTip.style.left = `${target.offsetLeft}px`;
-        blockTip.style.top = `${20  + target.offsetTop}px`;
+        blockTip.style.top = `${target.getBoundingClientRect().bottom}px`;
 
         setTimeout(removeActive, 2000, blockTip);
     }
