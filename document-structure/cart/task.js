@@ -34,7 +34,7 @@ function changeCount(event) {
     const product = target.closest('.product');    
     const countAdd = product.querySelector('.product__quantity-value');
     let countVal = +countAdd.innerText;    
-    if (target && target.classList.contains('product__quantity-control_dec') && countVal > 0) {
+    if (target && target.classList.contains('product__quantity-control_dec') && countVal > 1) {
         countVal -= 1;
     } else if (target && target.classList.contains('product__quantity-control_inc')) {
         countVal += 1;

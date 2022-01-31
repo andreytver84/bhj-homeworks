@@ -1,39 +1,41 @@
 window.addEventListener('load', () => {
 
-    document.addEventListener('scroll', () => hideTips());
+    //document.addEventListener('scroll', () => hideTips());
 
     const toolTips = document.querySelectorAll('.has-tooltip');
 
-    function addTips() {
-        toolTips.forEach(item => {
-            const tip = item.getAttribute('title');
-            item.insertAdjacentHTML("afterEnd", `<div class="tooltip">${tip}</div>`);
-        });
+    toolTips[0].insertAdjacentHTML("afterEnd", `<div class="tooltip"></div>`);
+
+    const blockTip = document.querySelector('.tooltip');
+
+    function getTips(link) {
+        const tip = link.getAttribute('title');
+        blockTip.innerText = `${tip}`;
+        console.log(blockTip);
     }
 
-    function hideTips() {
-        document.querySelectorAll('.tooltip').forEach(item => item.classList.remove('tooltip_active'));
+    function removeActive(block) {
+        block.classList.remove('tooltip_active');
     }
 
     function showTips(event) {
         event.preventDefault();
         const target = event.target;
-        const tipBlock = target.nextElementSibling;
-        if (!tipBlock.classList.contains('tooltip_active')) {
-            hideTips();
-            tipBlock.classList.add('tooltip_active');
-        } else {
-            tipBlock.classList.remove('tooltip_active');
+        getTips(target);
+        console.dir(target);
+        if (!blockTip.classList.contains('tooltip_active')) {
+            blockTip.classList.add('tooltip_active');
         }
-        tipBlock.style.left = `${event.x}px`;
-        tipBlock.style.top = `${event.y}px`;
-        //tipBlock.dataset.position = "bottom";
+
+
+        blockTip.style.left = `${target.offsetLeft}px`;
+        blockTip.style.top = `${20  + target.offsetTop}px`;
+
+        setTimeout(removeActive, 2000, blockTip);
     }
 
     toolTips.forEach(item => {
         item.addEventListener('click', showTips);
     });
-
-    addTips();
 
 });

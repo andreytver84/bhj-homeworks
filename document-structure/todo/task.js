@@ -20,7 +20,7 @@ function addTask(event) {
 
 function removeTask(event) {
     const target = event.target;
-    if (target && target.classList.contains('task__remove')) {
+    if (target.classList.contains('task__remove')) {
         target.closest('.task').remove();        
     }
 }
