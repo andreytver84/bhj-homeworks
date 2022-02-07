@@ -18,11 +18,7 @@ window.addEventListener('load', () => {
             blockTip.innerText = `${tip}`;       
             ind = 1 ;           
         }        
-    }
-
-    function removeActive(block) {
-        block.classList.remove('tooltip_active');
-    }
+    } 
 
     function showTips(event) {
         
