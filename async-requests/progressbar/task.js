@@ -25,7 +25,12 @@ window.addEventListener('load', () => {
         };
         xhr.upload.onloadend = function () {
             progress.value = 1;
-            alert('Данные полностью загружены на сервер!');            
+            setTimeout(()=> {
+                alert('Данные полностью загружены на сервер!');
+                progress.value = 0;
+                form.reset();
+                form.querySelector('.input__wrapper-desc').textContent = 'Имя файла...';
+            }, 1000);            
         };
         xhr.upload.onerror = function () {
             alert('Произошла ошибка при загрузке данных на сервер!');
