@@ -2,41 +2,37 @@ window.addEventListener('load', () => {
 
     const progress = document.getElementById('progress');
     const form = document.querySelector('form');
+    const file = form.querySelector('#file');
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         let xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
-        //request.setRequestHeader('Content-type','application/json');
-        //xhr.send();
         const formData = new FormData(form);
-        //const object = {};
+        formData.append('file', file.files[0]);
 
-        //formData.forEach(function (value, key) {
-        //    object[key] = value;
-        //});
-        //console.log(object);
+        xhr.upload.onloadstart = function (event) {            
+            progress.value = 0;
+            progress.max = event.total;
+        };
 
-        //const json = JSON.stringify(object);
+        xhr.upload.onprogress = function (event) {
+            progress.value = event.loaded;
+            progress.max = event.total;
+        };
+        xhr.upload.onloadend = function () {
+            alert('Данные полностью загружены на сервер!');
+            //progress.value = 0.7;
+        };
+        xhr.upload.onerror = function () {
+            alert('Произошла ошибка при загрузке данных на сервер!');
+        };
 
+        xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
         xhr.send(formData);
 
-        xhr.addEventListener('readystatechange', (event) => {
 
-            xhr.upload.onprogress = function () {
-                alert('Загружено на сервер');
-            };
-            xhr.upload.onload = function () {
-                alert('Данные полностью загружены на сервер!');
-                progress.value = 0.7;
-            };
-            xhr.upload.onerror = function () {
-                alert('Произошла ошибка при загрузке данных на сервер!');
-            };
-
-        });
     });
 
 });
