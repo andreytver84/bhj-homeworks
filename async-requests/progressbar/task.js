@@ -14,16 +14,18 @@ window.addEventListener('load', () => {
 
         xhr.upload.onloadstart = function (event) {            
             progress.value = 0;
-            progress.max = event.total;
+            //progress.max = event.total;
         };
 
         xhr.upload.onprogress = function (event) {
-            progress.value = event.loaded;
-            progress.max = event.total;
+           // console.log(event.loaded);
+           // progress.value = event.loaded;
+            // progress.max = event.total;
+            progress.value = 0.7;
         };
         xhr.upload.onloadend = function () {
-            alert('Данные полностью загружены на сервер!');
-            //progress.value = 0.7;
+            progress.value = 1;
+            alert('Данные полностью загружены на сервер!');            
         };
         xhr.upload.onerror = function () {
             alert('Произошла ошибка при загрузке данных на сервер!');
