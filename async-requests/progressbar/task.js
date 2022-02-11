@@ -13,14 +13,10 @@ window.addEventListener('load', () => {
         formData.append('file', file.files[0]);
 
         xhr.upload.onloadstart = function (event) {            
-            progress.value = 0;
-            //progress.max = event.total;
+            progress.value = 0;            
         };
 
-        xhr.upload.onprogress = function (event) {
-           // console.log(event.loaded);
-           // progress.value = event.loaded;
-            // progress.max = event.total;
+        xhr.upload.onprogress = function (event) {          
             progress.value = 0.7;
         };
         xhr.upload.onloadend = function () {
@@ -38,7 +34,6 @@ window.addEventListener('load', () => {
 
         xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
         xhr.send(formData);
-
 
     });
 
