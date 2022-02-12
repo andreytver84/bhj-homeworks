@@ -8,3 +8,17 @@ textarea {
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
 }
+#reset {
+  border: none;
+  background: #f0f0f0;
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 4px;
+  max-width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+#reset:hover {
+  background: #000000;
+  color: #ffffff;
+}

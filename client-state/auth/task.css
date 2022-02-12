@@ -36,7 +36,10 @@
   font-weight: 500;
   box-shadow: none;
 }
-
+#signout__btn {
+  display: block;
+  margin: 15px auto;
+}
 .welcome {
   display: none;
 }
