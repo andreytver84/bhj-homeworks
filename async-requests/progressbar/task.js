@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
         };
 
         xhr.upload.onprogress = function (event) {          
-            progress.value = 0.7;
+            progress.value = event.loaded/event.total;            
         };
         xhr.upload.onloadend = function () {
             progress.value = 1;
@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
                 progress.value = 0;
                 form.reset();
                 form.querySelector('.input__wrapper-desc').textContent = 'Имя файла...';
-            }, 1000);            
+            }, 1000);                      
         };
         xhr.upload.onerror = function () {
             alert('Произошла ошибка при загрузке данных на сервер!');
@@ -34,6 +34,8 @@ window.addEventListener('load', () => {
 
         xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
         xhr.send(formData);
+        let obj = {};
+       
 
     });
 
